@@ -8,4 +8,3 @@ class MyList(list):
     def print_sorted(self):
         """Print the sorted data in the assending format"""
         print(sorted(self))
-
