@@ -1,8 +1,8 @@
 -- Creats a new table with its own set of column.
 CREATE TABLE IF NOT EXISTS `second_table` (
 	`id` INT,
-	name VARCHAR(256),
-	score INT
+	`name` VARCHAR(256),
+	`score` INT
 );
 
 INSERT INTO second_table (id, name) VALUES
