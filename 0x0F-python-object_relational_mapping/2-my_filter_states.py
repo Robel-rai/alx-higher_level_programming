@@ -1,29 +1,29 @@
 #!/usr/bin/python3
 """
-This script takes in an argument and displays all values in the states table
-of hbtn_0e_0_usa where name matches the argument.
+Takes in an argument and displays
+all values in the states table of hbtn_0e_0_usa
+where name matches the argument.
 """
 
 import MySQLdb
 from sys import argv
 
 if __name__ == "__main__":
-    # Connect to a MySQL server running on localhost at port 3306
+    username = argv[1]
+    password = argv[2]
+    database = argv[3]
+    state_name = argv[4]
+
     db = MySQLdb.connect(host="localhost", port=3306,
-                         user=argv[1], passwd=argv[2], db=argv[3])
+                         user=username, passwd=password,
+                         db=database)
+
     cur = db.cursor()
-
-    # Create the SQL query with the user input
     query = "SELECT * FROM states WHERE name=%s ORDER BY id ASC"
-
-    # Execute the query and fetch all results
-    cur.execute(query, (argv[4],))
+    cur.execute(query, (state_name,))
     rows = cur.fetchall()
-
-    # Print each row of results
     for row in rows:
         print(row)
 
-    # Close cursor and connection to database
     cur.close()
     db.close()
